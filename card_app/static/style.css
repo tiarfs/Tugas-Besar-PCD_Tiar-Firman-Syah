@@ -1,0 +1,85 @@
+* { box-sizing: border-box; font-family: system-ui, Arial, sans-serif; }
+body { margin: 0; background: #0b1020; color: #eaf0ff; }
+.wrap { max-width: 980px; margin: 0 auto; padding: 24px; }
+h1 { margin: 0 0 14px; font-size: 24px; }
+h2 { margin: 0 0 10px; font-size: 18px; }
+
+.card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px;
+  padding: 14px;
+  margin-bottom: 14px;
+}
+
+.alert {
+  background: rgba(255, 204, 0, 0.12);
+  border: 1px solid rgba(255, 204, 0, 0.35);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  color: #ffe7a3;
+}
+
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+@media (max-width: 900px){ .grid { grid-template-columns: 1fr; } }
+
+img {
+  width: 100%;
+  max-height: 360px;
+  object-fit: contain;
+  background: rgba(0,0,0,0.25);
+  border-radius: 12px;
+}
+
+input[type="file"] { display:block; margin: 10px 0 12px; color: #dbe3ff; }
+button {
+  padding: 10px 14px;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  background: #6e8bff;
+  color: #081028;
+}
+.hint { color: #b7c3ff; font-size: 13px; margin: 10px 0 0; }
+.link { color: #b7c3ff; text-decoration: none; }
+.link:hover { text-decoration: underline; }
+code { color: #dbe3ff; }
+
+/* ===== KHUSUS INDEX PAGE ===== */
+.index-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.index-card {
+  width: 100%;
+  max-width: 520px;   /* ⬅️ simetris & tidak kependekan */
+}
+
+/* Tombol file custom (hanya index) */
+.file-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 0;
+  text-align: center;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  color: #eaf0ff;
+  background: rgba(0,0,0,0.35);
+  border: 1px dashed rgba(255,255,255,0.35);
+}
+
+.file-btn:hover {
+  background: rgba(0,0,0,0.55);
+}
+
+/* Nama file */
+.file-name {
+  font-size: 13px;
+  color: #b7c3ff;
+  text-align: center;
+}

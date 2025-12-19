@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Card Classifier</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <div class="wrap index-page">
+    <h1 style="text-align:center;">Card Classifier</h1>
+
+    {% if not model_ready %}
+      <div class="alert">
+        Model belum siap. Pastikan file:
+        <code>models/mobilenetv3_card.pth</code> dan
+        <code>models/labels.json</code>
+        sudah tersedia.
+      </div>
+    {% endif %}
+
+    <div class="card index-card">
+      <h2 style="text-align:center;">Upload Gambar</h2>
+
+      <form action="/predict" method="post" enctype="multipart/form-data">
+
+        <!-- INPUT FILE ASLI (WAJIB ADA, TAPI DISEMBUNYIKAN) -->
+        <input
+          type="file"
+          id="fileInput"
+          name="image"
+          accept="image/*"
+          required
+          style="display:none;"
+        >
+
+        <!-- SATU-SATUNYA TOMBOL PILIH GAMBAR -->
+        <label for="fileInput" class="file-btn">
+          Pilih Gambar
+        </label>
+
+        <!-- NAMA FILE -->
+        <p id="fileName" class="file-name"></p>
+
+        <!-- TOMBOL PREDICT -->
+        <button type="submit" style="width:100%;">Predict</button>
+      </form>
+
+      <p class="hint" style="text-align:center;">
+        Pipeline preprocessing: Gaussian + Median, CLAHE, Contrast Stretching.
+      </p>
+    </div>
+  </div>
+
+  <!-- SCRIPT UNTUK MENAMPILKAN NAMA FILE -->
+  <script>
+    const input = document.getElementById("fileInput");
+    const fileName = document.getElementById("fileName");
+
+    input.addEventListener("change", () => {
+      if (input.files.length > 0) {
+        fileName.textContent = "File dipilih: " + input.files[0].name;
+      } else {
+        fileName.textContent = "";
+      }
+    });
+  </script>
+
+</body>
+</html>
